@@ -1,0 +1,7 @@
+<h2>Add a recipe:</h2>
+
+<%= bootstrap_form_for @recipe do |f| %>
+  <%= f.text_field :name, label: "Recipe Name" %>
+  <%= f.text_area :directions, label: "Directions" %>
+  <%= f.submit %>
+<% end %>
