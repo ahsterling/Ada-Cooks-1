@@ -3,5 +3,13 @@
 <%= bootstrap_form_for @recipe do |f| %>
   <%= f.text_field :name, label: "Recipe Name" %>
   <%= f.text_area :directions, label: "Directions" %>
+
+  <% 5.times do %>
+    <%= f.fields_for @ingredient do |i| %>
+      <%= i.text_field :name, label: "Ingredient" %>
+    <% end %>
+  <% end %>
+
   <%= f.submit %>
+
 <% end %>
