@@ -3,3 +3,5 @@
 <% @recipes.each do |recipe| %>
   <h3><%= link_to recipe.name, recipe_path(recipe.id) %></h3>
 <% end %>
+
+<%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-default" %>
