@@ -2,8 +2,9 @@
 
 <h3>Ingredients:</h3>
 <ul>
-  <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
+  <% @recipe_ingredients.each do |recipe_ingredient| %>
+
+    <li><%= recipe_ingredient.measurement %> <%= recipe_ingredient.unit %> <strong><%= recipe_ingredient.ingredient.name %></strong> </li>
   <% end %>
 </ul>
 <p><%= @recipe.directions %></p>

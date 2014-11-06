@@ -2,6 +2,7 @@ class RecipeForm
 
   def initialize(attributes)
     @attributes = attributes
+
   end
 
   def recipe
@@ -25,6 +26,16 @@ class RecipeForm
         )
       end
     end
+
+    new = @attributes[:new_ingredient]
+    new_ingredient = Ingredient.create(name: new[:name])
+    RecipeIngredient.create(
+      ingredient_id: new_ingredient.id,
+      recipe_id: @recipe.id,
+      unit: new[:unit],
+      measurement: new[:measurement],
+       )
+
     if @recipe.valid?
       true
     else
