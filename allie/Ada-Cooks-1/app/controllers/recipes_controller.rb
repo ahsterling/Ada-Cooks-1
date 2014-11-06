@@ -14,8 +14,8 @@ class RecipesController < ApplicationController
   end
 
   def create
+    # raise params[:recipe_form].inspect
     @recipe_form = RecipeForm.new(params[:recipe_form])
-    # @recipe = Recipe.new(params.require(:recipe).permit(:name, :directions))
     if @recipe_form.submit
       redirect_to recipe_path(@recipe_form.recipe.id)
     else
