@@ -1,15 +1,21 @@
 <h2>Add a recipe:</h2>
 
-<%= bootstrap_form_for @recipe do |f| %>
-  <%= f.text_field :name, label: "Recipe Name" %>
-  <%= f.text_area :directions, label: "Directions" %>
-
-  <% 5.times do %>
-    <%= f.fields_for @ingredient do |i| %>
-      <%= i.text_field :name, label: "Ingredient" %>
+<%= form_tag recipes_path do %>
+  <div>
+    <%= label_tag "recipe_form[name]", "Name" %>
+    <%= text_field_tag "recipe_form[name]" %>
+  </div>
+  <div>
+    <%= label_tag "recipe_form[directions]", "Description" %>
+    <%= text_area_tag "recipe_form[directions]" %>
+  </div>
+  <div>
+    <% @ingredients.each do |ingredient| %>
+    <p>
+      <%= check_box_tag "recipe_form[ingredients][]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
+      <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
+    </p>
     <% end %>
-  <% end %>
-
-  <%= f.submit %>
-
+  </div>
+  <%= submit_tag %>
 <% end %>

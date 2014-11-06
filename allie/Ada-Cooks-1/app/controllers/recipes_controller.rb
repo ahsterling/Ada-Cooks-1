@@ -10,10 +10,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @ingredient = Ingredient.new
+    @ingredients = Ingredient.all
   end
 
   def create
+    raise
     @recipe = Recipe.new(params.require(:recipe).permit(:name, :directions))
     if @recipe.save
       redirect_to root_path
