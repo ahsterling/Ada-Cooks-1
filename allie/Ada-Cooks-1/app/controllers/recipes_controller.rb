@@ -14,12 +14,27 @@ class RecipesController < ApplicationController
   end
 
   def create
-    # raise params[:recipe_form].inspect
     @recipe_form = RecipeForm.new(params[:recipe_form])
     if @recipe_form.submit
       redirect_to recipe_path(@recipe_form.recipe.id)
     else
       render :new
+    end
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+    @all_ingredients = Ingredient.all
+    @recipe_ingredients = @recipe.recipe_ingredients
+  end
+
+  def update
+    recipe = Recipe.find(params[:id])
+    @recipe_form = RecipeForm.new(params[:recipe_form], recipe)
+    if @recipe_form.update
+      redirect_to recipe_path(@recipe_form.recipe.id)
+    else
+      render :edit
     end
   end
 end

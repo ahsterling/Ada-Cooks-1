@@ -1,0 +1,6 @@
+<h2>Edit <%= @recipe.name %></h2>
+
+<%= render "shared/form", all_ingredients: @all_ingredients,
+                          recipe_ingredients: @recipe_ingredients,
+                          recipe: @recipe,
+                          method: :put %>
