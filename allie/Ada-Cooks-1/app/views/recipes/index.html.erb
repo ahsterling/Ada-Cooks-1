@@ -10,9 +10,13 @@
 <ul>
 <% @ingredients.each do |ing| %>
   <li>
-    <%= ing.name %>
-    <%= link_to "Edit", edit_ingredient_path(ing.id) %>
-    <%= link_to "Delete", ingredient_path(ing.id), method: :delete, class: "btn-small btn-danger" %>
+    <h5>
+      <%= ing.name %>
+      <%= link_to "Edit", edit_ingredient_path(ing.id), class: "btn-xs btn-primary" %>
+      <%= link_to "Delete", ingredient_path(ing.id), method: :delete, class: "btn-xs btn-danger" %>
+  </h5>
   </li>
 <% end %>
 </ul>
+
+<%= link_to "Add a new ingredient", new_ingredient_path, class: "btn btn-default" %>
