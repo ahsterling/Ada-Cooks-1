@@ -30,10 +30,11 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
-    if @ingredient.destroy
-      redirect_to root_path
-    end
+    ingredient = Ingredient.find(params[:id])
+    delete_ingredient(ingredient)
+
+    redirect_to root_path
+    
   end
 
 end
