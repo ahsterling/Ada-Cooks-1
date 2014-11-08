@@ -5,3 +5,14 @@
 <% end %>
 
 <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-default" %>
+
+<h4>All ingredients:</h4>
+<ul>
+<% @ingredients.each do |ing| %>
+  <li>
+    <%= ing.name %>
+    <%= link_to "Edit", edit_ingredient_path(ing.id) %>
+    <%= link_to "Delete", ingredient_path(ing.id), method: :delete, class: "btn-small btn-danger" %>
+  </li>
+<% end %>
+</ul>

@@ -86,10 +86,6 @@ class RecipeForm
       directions: @attributes[:directions]
     )
 
-    # Each recipe_ingredient has a unit, measurement, ingredient id, recipe id, and unique id
-    # for each recipe ingredient associated with this recipe, update the unit and measurement
-    # to the one in @attributes
-
     @recipe.recipe_ingredients.each do |ri|
       ri.update(
         unit: @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:unit],
@@ -97,27 +93,9 @@ class RecipeForm
       )
     end
 
-    # @attributes[:ingredients].each_value do |ingredient|
-    #   if ingredient[:id]
-    #     recipe_ingredient = RecipeIngredient.find_by(ingredient_id: ingredient[:id].to_i)
-    #     recipe_ingredient.update(
-    #       ingredient_id: ingredient[:id],
-    #       recipe_id: @recipe.id,
-    #       unit: ingredient[:unit],
-    #       measurement: ingredient[:measurement]
-    #     )
-    #   end
-    # end
     add_existing_ingredients
     new_ingredients
-    # new = @attributes[:new_ingredient]
-    # new_ingredient = Ingredient.create(name: new[:name])
-    # RecipeIngredient.create(
-    #   ingredient_id: new_ingredient.id,
-    #   recipe_id: @recipe.id,
-    #   unit: new[:unit],
-    #   measurement: new[:measurement],
-    #    )
+
 
     if @recipe.valid?
       true
