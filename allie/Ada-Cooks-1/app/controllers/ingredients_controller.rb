@@ -5,8 +5,11 @@ class IngredientsController < ApplicationController
   end
 
   def create
+    @ingredients = Ingredient.all
     @ingredient = Ingredient.new(params.require(:ingredient).permit(:name))
     if @ingredient.save
+      redirect_to ingredients_path
+    else
       render "recipes/new"
     end
   end
