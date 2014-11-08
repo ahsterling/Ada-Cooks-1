@@ -13,34 +13,31 @@
   <div>
     <% @recipe_ingredients.each do |ri| %>
     <p>
-      <%= check_box_tag "recipe_form[ingredients][#{ri.id}][id]", ri.id, id: "ingredient_#{ri.id}" %>
-      <%= label_tag "ingredient_#{ri.id}", ri.ingredient.name %>
-
-
-      <%= label_tag "recipe_form[ingredients][#{ri.id}][measurement]", "Measurement" %>
-      <%= text_field_tag "recipe_form[ingredients][#{ri.id}][measurement]", ri.measurement %>
-      <%= label_tag "recipe_form[ingredients][#{ri.id}][unit]", "Unit" %>
-      <%= text_field_tag "recipe_form[ingredients][#{ri.id}][unit]", ri.unit %>
-
+      <%= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][r_id]", ri.id, id: "ingredient_#{ri.ingredient.id}" %>
+      <%= label_tag "ingredient_#{ri.ingredient.id}", ri.ingredient.name %>
+      <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][measurement]", "Measurement" %>
+      <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][measurement]", ri.measurement %>
+      <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][unit]", "Unit" %>
+      <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][unit]", ri.unit %>
     </p>
     <% end %>
   </div>
+
   <div>
     <h3>Choose other ingredients:</h3>
     <% @ingredients.each do |ingredient| %>
     <p>
-      <%= check_box_tag "recipe_form[ingredients][#{ingredient.id}][id]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
-      <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
-
-
-      <%= label_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", "Measurement" %>
-      <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][measurement]" %>
-      <%= label_tag "recipe_form[ingredients][#{ingredient.id}][unit]", "Unit" %>
-      <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][unit]" %>
+      <%= check_box_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][i_id]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
+      <%= label_tag "ingredient_ingredient_#{ingredient.id}", ingredient.name %>
+      <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]", "Measurement" %>
+      <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]" %>
+      <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]", "Unit" %>
+      <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]" %>
 
     </p>
     <% end %>
   </div>
+
   <div>
     <h3>Add New Ingredients:</h3>
     <% 5.times do |n| %>
@@ -53,10 +50,7 @@
         <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]"%>
       </p>
     <% end %>
-
   </div>
-  <div>
 
-  </div>
   <%= submit_tag %>
 <% end %>

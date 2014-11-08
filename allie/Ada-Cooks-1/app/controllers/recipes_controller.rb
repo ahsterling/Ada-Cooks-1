@@ -30,7 +30,6 @@ class RecipesController < ApplicationController
   end
 
   def update
-
     @recipe = Recipe.find(params[:id])
     @recipe_form = RecipeForm.new(params[:recipe_form], @recipe)
     if @recipe_form.update

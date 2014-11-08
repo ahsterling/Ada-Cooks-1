@@ -32,10 +32,10 @@ class RecipeForm
   end
 
   def add_existing_ingredients
-    @attributes[:ingredients].each_value do |ingredient|
-      if ingredient[:id]
+    @attributes[:other_ingredients].each_value do |ingredient|
+      if ingredient[:i_id]
         RecipeIngredient.create(
-          ingredient_id: ingredient[:id],
+          ingredient_id: ingredient[:i_id],
           recipe_id: @recipe.id,
           unit: ingredient[:unit],
           measurement: ingredient[:measurement]
@@ -92,8 +92,8 @@ class RecipeForm
 
     @recipe.recipe_ingredients.each do |ri|
       ri.update(
-        unit: @attributes[:ingredients][ri.id.to_s][:unit],
-        measurement:  @attributes[:ingredients][ri.id.to_s][:measurement]
+        unit: @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:unit],
+        measurement:  @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:measurement]
       )
     end
 
@@ -108,7 +108,7 @@ class RecipeForm
     #     )
     #   end
     # end
-    # add_existing_ingredients
+    add_existing_ingredients
     new_ingredients
     # new = @attributes[:new_ingredient]
     # new_ingredient = Ingredient.create(name: new[:name])
