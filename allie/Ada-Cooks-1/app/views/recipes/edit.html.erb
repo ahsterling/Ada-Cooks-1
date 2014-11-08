@@ -1,6 +1,46 @@
 <h2>Edit <%= @recipe.name %></h2>
 
-<%= render "shared/form", all_ingredients: @all_ingredients,
-                          recipe_ingredients: @recipe_ingredients,
-                          recipe: @recipe,
-                          method: :put %>
+<%= form_tag recipe_path(@recipe.id), method: :patch do %>
+  <div>
+    <%= label_tag "recipe_form[name]", "Name" %>
+    <%= text_field_tag "recipe_form[name]", @recipe.name %>
+  </div>
+  <div>
+    <%= label_tag "recipe_form[directions]", "Directions" %>
+    <%= text_area_tag "recipe_form[directions]", @recipe.directions %>
+  </div>
+  <h3>Ingredients:</h3>
+  <div>
+    <% @recipe_ingredients.each do |ri| %>
+    <p>
+      <%= check_box_tag "recipe_form[ingredients][#{ri.id}][id]", ri.id, id: "ingredient_#{ri.id}" %>
+      <%= label_tag "ingredient_#{ri.id}", ri.ingredient.name %>
+
+
+      <%= label_tag "recipe_form[ingredients][#{ri.id}][measurement]", "Measurement" %>
+      <%= text_field_tag "recipe_form[ingredients][#{ri.id}][measurement]", ri.measurement %>
+      <%= label_tag "recipe_form[ingredients][#{ri.id}][unit]", "Unit" %>
+      <%= text_field_tag "recipe_form[ingredients][#{ri.id}][unit]", ri.unit %>
+
+    </p>
+    <% end %>
+  </div>
+  <div>
+    <h3>Add New Ingredients:</h3>
+    <% 5.times do |n| %>
+      <p>
+        <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name" %>
+        <%= text_field_tag "recipe_form[new_ingredients][#{n}][name]" %>
+        <%= label_tag "recipe_form[new_ingredients][#{n}][measurement]", "Measurement" %>
+        <%= text_field_tag "recipe_form[new_ingredients][#{n}][measurement]"%>
+        <%= label_tag "recipe_form[new_ingredients][#{n}][unit]", "Unit" %>
+        <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]"%>
+      </p>
+    <% end %>
+
+  </div>
+  <div>
+
+  </div>
+  <%= submit_tag %>
+<% end %>

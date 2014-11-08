@@ -17,17 +17,17 @@
       <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
 
 
-        <%= label_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", "Measurement" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][measurement]" %>
-        <%= label_tag "recipe_form[ingredients][#{ingredient.id}][unit]", "Unit" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][unit]" %>
+      <%= label_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", "Measurement" %>
+      <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][measurement]" %>
+      <%= label_tag "recipe_form[ingredients][#{ingredient.id}][unit]", "Unit" %>
+      <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][unit]" %>
 
     </p>
     <% end %>
   </div>
   <div>
     <h3>Add New Ingredients:</h3>
-    <% 5.times do |n|%>
+    <% 5.times do |n| %>
       <p>
         <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name" %>
         <%= text_field_tag "recipe_form[new_ingredients][#{n}][name]" %>

@@ -1,4 +1,4 @@
-<h2>View All Recipes</h2>
+<h2 id = "header">View All Recipes</h2>
 
 <% @recipes.each do |recipe| %>
   <h3><%= link_to recipe.name, recipe_path(recipe.id) %></h3>

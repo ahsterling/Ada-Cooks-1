@@ -3,10 +3,12 @@
 <h3>Ingredients:</h3>
 <ul>
   <% @recipe_ingredients.each do |recipe_ingredient| %>
-
-    <li><%= recipe_ingredient.measurement %> <%= recipe_ingredient.unit %> <strong><%= recipe_ingredient.ingredient.name %></strong> </li>
+    <% if recipe_ingredient.ingredient %>
+      <li><%= recipe_ingredient.measurement %> <%= recipe_ingredient.unit %> <strong><%= recipe_ingredient.ingredient.name %></strong> </li>
+      <% end %>
   <% end %>
 </ul>
 <p><%= @recipe.directions %></p>
 
-<%= link_to "Edit this Recipe", edit_recipe_path(@recipe) %>
+<%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+<%= link_to "Delete this Recipe", recipe_path(@recipe), method: :delete, class: "btn btn-danger", id: "delete" %>

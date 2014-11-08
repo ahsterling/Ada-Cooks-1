@@ -1,0 +1,5 @@
+<h2>All Ingredients</h2>
+
+<% @ingredients.each do |i| %>
+  <h3><%= i.name %>  <small><%= link_to "Edit", edit_ingredient_path(i.id) %></small></h3>
+<% end %>
