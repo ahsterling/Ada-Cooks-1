@@ -14,3 +14,51 @@
  *= require_self
  *= require rails_bootstrap_forms
  */
+
+h2 {
+  color: #DE7047;
+}
+
+h3 a {
+  color: #528540;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-color: #a5a5a5
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 5px;
+}
+
+.nav-link a {
+  color: #FFDE8D;
+}
+.nav-link a:hover {
+  color: #DE7047;
+  text-decoration: none;
+}
+
+.header {
+  background-color: #528540;
+}
+
+.header-name {
+  /*background: #e7e7e7;*/
+  width: 325px;
+  text-shadow: 1px 1px 1px #575757;
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.btn-danger {
+  background-color: #DE7047;
+}
+
+.btn-primary {
+  background-color: #FFDE8D;
+  color: black;
+}

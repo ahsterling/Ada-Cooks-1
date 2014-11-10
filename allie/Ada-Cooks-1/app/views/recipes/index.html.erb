@@ -1,22 +1,24 @@
-<h2 id = "header">View All Recipes</h2>
+<div class = "row">
+  <div class = "col-xs-6">
+    <h2 id = "header">View All Recipes:</h2>
+    <hr>
+    <% @recipes.each do |recipe| %>
+      <h3><%= link_to recipe.name, recipe_path(recipe.id) %></h3>
+    <% end %>
 
-<% @recipes.each do |recipe| %>
-  <h3><%= link_to recipe.name, recipe_path(recipe.id) %></h3>
-<% end %>
+    <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-default" %>
+  </div>
+  <div class = "col-xs-6">
+    <h2>View All ingredients:</h2>
+    <hr>
+    <% @ingredients.each do |ing| %>
 
-<%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-default" %>
+      <h4>
+        <%= ing.name %>
+        <%= link_to "Edit", edit_ingredient_path(ing.id), class: "btn-xs btn-primary" %>
+        <%= link_to "Delete", ingredient_path(ing.id), method: :delete, class: "btn-xs btn-danger" %>
+      </h4>
+    <% end %>
 
-<h4>All ingredients:</h4>
-<ul>
-<% @ingredients.each do |ing| %>
-  <li>
-    <h5>
-      <%= ing.name %>
-      <%= link_to "Edit", edit_ingredient_path(ing.id), class: "btn-xs btn-primary" %>
-      <%= link_to "Delete", ingredient_path(ing.id), method: :delete, class: "btn-xs btn-danger" %>
-  </h5>
-  </li>
-<% end %>
-</ul>
-
-<%= link_to "Add a new ingredient", new_ingredient_path, class: "btn btn-default" %>
+    <%= link_to "Add a new ingredient", new_ingredient_path, class: "btn btn-default" %>
+  </div>
