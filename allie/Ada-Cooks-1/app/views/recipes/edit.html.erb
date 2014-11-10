@@ -16,10 +16,11 @@
 
           <% if ri.ingredient %>
             <div class = "form-group">
-              <%= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][r_id]", ri.id, id: "ingredient_#{ri.ingredient_id}" %>
+              <%#= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][r_id]", ri.id, id: "ingredient_#{ri.ingredient_id}" %>
               <span class = "ing-name"><%= label_tag "ingredient_#{ri.ingredient_id}", ri.ingredient.name %></span>
+              <span class = "delete-box"><%= label_tag "ingredient_#{ri.ingredient_id}", "Delete?" %></span>
               <%= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][delete]", "yes"  %>
-              <span><%= label_tag "ingredient_#{ri.ingredient_id}", "Delete?" %></span>
+
             </div>
             <div class = "form-inline">
               <div class = "form-group">
