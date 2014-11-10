@@ -46,7 +46,7 @@ hr {
   background-color: #528540;
 }
 
-.header-name {
+.header-name a {
   /*background: #e7e7e7;*/
   width: 325px;
   text-shadow: 1px 1px 1px #575757;
@@ -54,11 +54,51 @@ hr {
   margin-top: 15px;
 }
 
+.header-name a:hover {
+  text-decoration: none;
+}
+
 .btn-danger {
   background-color: #DE7047;
+  border: 1px solid black;
+}
+
+.btn-danger:hover {
+  background-color: #6E3723;
 }
 
 .btn-primary {
   background-color: #FFDE8D;
   color: black;
+  border: 1px solid black;
+}
+
+.btn-primary:hover {
+  background-color: #A8935D;
+}
+
+.ing-name {
+  font-size: 16pt;
+  color: #DE7047;
+}
+
+.ing-measure {
+  visibility: hidden;
+}
+
+.ing-measure:click {
+  visibility: visible;
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+.form-inline {
+  margin-left: 15px;
+  margin-top: 3px;
 }

@@ -1,56 +1,85 @@
 <h2>Edit <%= @recipe.name %></h2>
+<div class = "row">
+  <div class = "col-xs-6">
+    <%= form_tag recipe_path(@recipe.id), method: :patch, class: "form" do %>
+      <div class = "form-group">
+        <%= label_tag "recipe_form[name]", "Name" %>
+        <%= text_field_tag "recipe_form[name]", @recipe.name, class: "form-control" %>
+      </div>
+      <div class = "form-group">
+        <%= label_tag "recipe_form[directions]", "Directions" %>
+        <%= text_area_tag "recipe_form[directions]", @recipe.directions, class: "form-control" %>
+      </div>
+      <h3>Ingredients:</h3>
+      <div>
+        <% @recipe_ingredients.each do |ri| %>
 
-<%= form_tag recipe_path(@recipe.id), method: :patch do %>
-  <div>
-    <%= label_tag "recipe_form[name]", "Name" %>
-    <%= text_field_tag "recipe_form[name]", @recipe.name %>
-  </div>
-  <div>
-    <%= label_tag "recipe_form[directions]", "Directions" %>
-    <%= text_area_tag "recipe_form[directions]", @recipe.directions %>
-  </div>
-  <h3>Ingredients:</h3>
-  <div>
-    <% @recipe_ingredients.each do |ri| %>
-    <p>
-      <%= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][r_id]", ri.id, id: "ingredient_#{ri.ingredient.id}" %>
-      <%= label_tag "ingredient_#{ri.ingredient.id}", ri.ingredient.name %>
-      <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][measurement]", "Measurement" %>
-      <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][measurement]", ri.measurement %>
-      <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][unit]", "Unit" %>
-      <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient.id}][unit]", ri.unit %>
-    </p>
-    <% end %>
-  </div>
+          <% if ri.ingredient %>
+            <div class = "form-group">
+              <%= check_box_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][r_id]", ri.id, id: "ingredient_#{ri.ingredient_id}" %>
+              <span class = "ing-name"><%= label_tag "ingredient_#{ri.ingredient_id}", ri.ingredient.name %></span>
+            </div>
+            <div class = "form-inline">
+              <div class = "form-group">
+                <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][measurement]", "Measurement" %>
+                <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][measurement]", ri.measurement, class: "form-control" %>
+              </div>
+              <div class = "form-group">
+                <%= label_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][unit]", "Unit" %>
+                <%= text_field_tag "recipe_form[existing_ingredients][ingredient_#{ri.ingredient_id}][unit]", ri.unit, class: "form-control" %>
+              </div>
+            </div>
+          <% end %>
 
-  <div>
-    <h3>Choose other ingredients:</h3>
-    <% @ingredients.each do |ingredient| %>
-    <p>
-      <%= check_box_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][i_id]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
-      <%= label_tag "ingredient_ingredient_#{ingredient.id}", ingredient.name %>
-      <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]", "Measurement" %>
-      <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]" %>
-      <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]", "Unit" %>
-      <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]" %>
+        <% end %>
+      </div>
 
-    </p>
-    <% end %>
+    <div>
+      <h3>Choose other ingredients:</h3>
+      <% @ingredients.each do |ingredient| %>
+
+
+        <div class = "form-group">
+          <%= check_box_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][i_id]", ingredient.id, false, id: "ingredient_#{ingredient.id}", class: "checkbox" %>
+          <span class = "ing-name"><%= label_tag "ingredient_ingredient_#{ingredient.id}", ingredient.name %></span>
+        </div>
+        <div class = "form-inline">
+          <div class = "form-group">
+            <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]", "Measurement" %>
+            <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][measurement]", nil, class: "form-control" %>
+          </div>
+
+          <div class = "form-group">
+            <%= label_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]", "Unit" %>
+            <%= text_field_tag "recipe_form[other_ingredients][ingredient_#{ingredient.id}][unit]", nil, class: "form-control" %>
+          </div>
+
+      </div>
+      <% end %>
+    </div>
   </div>
+  <div class = "col-xs-6">
+    <div>
+      <h3>Add New Ingredients:</h3>
+      <% 5.times do |n| %>
+        <div class = "form-group">
+          <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name" %>
+          <span class = "ing-name"><%= text_field_tag "recipe_form[new_ingredients][#{n}][name]", nil, class: "form-control" %></span>
+        </div>
+        <div class = "form-inline">
+          <div class = "form-group">
+            <%= label_tag "recipe_form[new_ingredients][#{n}][measurement]", "Measurement" %>
+            <%= text_field_tag "recipe_form[new_ingredients][#{n}][measurement]", nil, class: "form-control" %>
+          </div>
+          <div class = "form-group">
+            <%= label_tag "recipe_form[new_ingredients][#{n}][unit]", "Unit" %>
+            <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]", nil, class: "form-control" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-  <div>
-    <h3>Add New Ingredients:</h3>
-    <% 5.times do |n| %>
-      <p>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][name]" %>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][measurement]", "Measurement" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][measurement]"%>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][unit]", "Unit" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]"%>
-      </p>
-    <% end %>
-  </div>
-
-  <%= submit_tag %>
-<% end %>
+    <%= submit_tag %>
+  <% end %>
+</div>
+</div>
