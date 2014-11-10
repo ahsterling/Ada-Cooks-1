@@ -1,54 +1,53 @@
-<%= form_tag recipe_path(recipe.id), method: method do %>
-  <div>
+<%= form_tag recipes_path, class: "form" do %>
+  <div class = "form-group">
     <%= label_tag "recipe_form[name]", "Name" %>
-    <%= text_field_tag "recipe_form[name]", recipe.name %>
-  </div>
-  <div>
+    <%= text_field_tag "recipe_form[name]", nil, class: "form-control" %>
+  </div> <!-- form-group -->
+  <div class = "form-group">
     <%= label_tag "recipe_form[directions]", "Directions" %>
-    <%= text_area_tag "recipe_form[directions]", recipe.directions %>
-  </div>
+    <%= text_area_tag "recipe_form[directions]", nil, class: "form-control" %>
+  </div> <!-- form-group -->
+  <div class = "add-existing-ingredients">
+    <h3>Choose Ingredients:</h3>
 
-  <div>
-    <h3>Your Ingredients</h3>
-    <% recipe_ingredients.each do |ri| %>
-      <p>
-        <%= label_tag "ingredient_#{ri.id}", ri.ingredient.name %>
-        <%= check_box_tag "recipe_form[ingredients][#{ri.id}][id]", ri.id, id: "ingredient_#{ri.id}" %>
+    <% @ingredients.each do |ingredient| %>
+      <div class = "form-group">
+        <%= check_box_tag "recipe_form[ingredients][#{ingredient.id}][id]", ingredient.id, false, id: "ingredient_#{ingredient.id}", class: "checkbox" %>
+        <span class = "ing-name"><%= label_tag "ingredient_#{ingredient.id}", "#{ingredient.name.titleize}" %></span>
+      </div> <!-- form-group -->
+      <div class = "form-inline">
+        <div class = "form-group">
+          <%= label_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", "Measurement" %>
+          <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", nil, size: 4, class: "form-control" %>
+        </div> <!-- form-group -->
 
-        <%= label_tag "recipe_form[ingredients][#{ri.id}][measurement]", "Measurement" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ri.id}][measurement]", ri.measurement %>
-        <%= label_tag "recipe_form[ingredients][#{ri.id}][unit]", "Unit" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ri.id}][unit]", ri.unit %>
-      </p>
+        <div class = "form-group">
+          <%= label_tag "recipe_form[ingredients][#{ingredient.id}][unit]", "Unit" %>
+          <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][unit]", nil, class: "form-control" %>
+        </div> <!-- form-group -->
+      </div> <!-- form-inline -->
     <% end %>
-  </div>
-  <div>
-    <h3>Add Ingredients</h3>
-    <% all_ingredients.each do |ingredient| %>
-      <p>
-        <%= check_box_tag "recipe_form[ingredients][#{ingredient.id}][id]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
-        <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
-        <%= label_tag "recipe_form[ingredients][#{ingredient.id}][measurement]", "Measurement" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][measurement]" %>
-        <%= label_tag "recipe_form[ingredients][#{ingredient.id}][unit]", "Unit" %>
-        <%= text_field_tag "recipe_form[ingredients][#{ingredient.id}][unit]" %>
-      </p>
-    <% end %>
+  </div> <!-- add-existing-ingredients -->
+</div> <!-- col-xs-6 -->
 
-    <h3>Add New Ingredient:</h3>
+<div class = "col-xs-6">
+  <div class = "new-ingredients">
+    <h3>Add New Ingredients:</h3>
+
     <% 5.times do |n| %>
-      <p>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][name]" %>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][measurement]", "Measurement" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][measurement]"%>
-        <%= label_tag "recipe_form[new_ingredients][#{n}][unit]", "Unit" %>
-        <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]"%>
-      </p>
+      <div class = "form-group">
+        <%= label_tag "recipe_form[new_ingredients][#{n}][name]", "Ingredient Name:", class: "ing-name" %>
+        <%= text_field_tag "recipe_form[new_ingredients][#{n}][name]", nil, class: "form-control" %>
+      </div> <!-- form-group -->
+      <div class = "form-inline">
+        <div class = "form-group">
+          <%= label_tag "recipe_form[new_ingredients][#{n}][measurement]", "Measurement: " %>
+          <%= text_field_tag "recipe_form[new_ingredients][#{n}][measurement]", nil, size: 8, class: "form-control" %>
+        </div> <!-- form-group -->
+        <div class = "form-group">
+          <%= label_tag "recipe_form[new_ingredients][#{n}][unit]", "Unit: " %>
+          <%= text_field_tag "recipe_form[new_ingredients][#{n}][unit]", nil, size: 10, class: "form-control" %>
+        </div> <!-- form-group -->
+      </div><!-- form-inline -->
     <% end %>
-  </div>
-  <div>
-
-  </div>
-  <%= submit_tag %>
-<% end %>
+    <%= submit_tag "Add Recipe", class: "btn btn-primary" %>

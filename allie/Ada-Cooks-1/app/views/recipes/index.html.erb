@@ -5,14 +5,13 @@
     <% @recipes.each do |recipe| %>
       <h3><%= link_to recipe.name, recipe_path(recipe.id) %></h3>
     <% end %>
-
     <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-default" %>
-  </div>
+  </div> <!-- col-xs-6 -->
+
   <div class = "col-xs-6">
     <h2>View All ingredients:</h2>
     <hr>
     <% @ingredients.each do |ing| %>
-
       <h4>
         <%= ing.name %>
         <%= link_to "Edit", edit_ingredient_path(ing.id), class: "btn-xs btn-primary" %>
@@ -21,4 +20,5 @@
     <% end %>
 
     <%= link_to "Add a new ingredient", new_ingredient_path, class: "btn btn-default" %>
-  </div>
+  </div> <!-- col-xs-6 -->
+</div> <!-- row -->
