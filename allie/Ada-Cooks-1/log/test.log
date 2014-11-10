@@ -2025,3 +2025,125 @@ Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35mRecipeIngredient Load (0.1ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 132]]
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (6.6ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "recipes" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.534974"], ["updated_at", "2014-11-10 02:07:42.534974"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by RecipesController#index as HTML
+  Rendered recipes/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[35mRecipe Load (0.4ms)[0m  SELECT "recipes".* FROM "recipes"
+  [1m[36m (5.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "ingredients" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.575272"], ["updated_at", "2014-11-10 02:07:42.575272"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by RecipesController#index as HTML
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[35mIngredient Load (0.5ms)[0m  SELECT "ingredients".* FROM "ingredients"
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by RecipesController#index as HTML
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.589412"], ["name", "test"], ["updated_at", "2014-11-10 02:07:42.589412"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.602386"], ["ingredient_id", 143], ["updated_at", "2014-11-10 02:07:42.602386"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.617525"], ["name", "test"], ["updated_at", "2014-11-10 02:07:42.617525"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.619460"], ["ingredient_id", 144], ["updated_at", "2014-11-10 02:07:42.619460"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.626933"], ["name", "test"], ["updated_at", "2014-11-10 02:07:42.626933"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (6.7ms)[0m  [1mUPDATE "ingredients" SET "name" = $1, "updated_at" = $2 WHERE "ingredients"."id" = 145[0m  [["name", "chocolate chip"], ["updated_at", "2014-11-10 02:07:42.628450"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.639553"], ["name", "test"], ["updated_at", "2014-11-10 02:07:42.639553"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mIngredient Load (0.3ms)[0m  SELECT  "ingredients".* FROM "ingredients"  WHERE "ingredients"."id" = $1 LIMIT 1  [["id", 146]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "ingredients" WHERE "ingredients"."id" = $1  [["id", 146]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mIngredient Load (0.2ms)[0m  SELECT  "ingredients".* FROM "ingredients"  WHERE "ingredients"."id" = $1 LIMIT 1  [["id", 146]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.649394"], ["name", "test"], ["updated_at", "2014-11-10 02:07:42.649394"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "measurement", "unit", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.651429"], ["ingredient_id", 147], ["measurement", 1], ["unit", "cup"], ["updated_at", "2014-11-10 02:07:42.651429"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRecipeIngredient Load (6.8ms)[0m  [1mSELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."ingredient_id" = $1 AND "recipe_ingredients"."unit" = 'cup' LIMIT 1[0m  [["ingredient_id", 147]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "recipe_ingredients" SET "unit" = $1, "updated_at" = $2 WHERE "recipe_ingredients"."id" = 115[0m  [["unit", "teaspoon"], ["updated_at", "2014-11-10 02:07:42.672735"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "recipes" ("created_at", "directions", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.676946"], ["directions", "Bake cookies."], ["name", "Cookies"], ["updated_at", "2014-11-10 02:07:42.676946"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "recipes" ("created_at", "directions", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.681122"], ["directions", "Bake cookies."], ["name", "Cookies"], ["updated_at", "2014-11-10 02:07:42.681122"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "recipes" ("created_at", "directions", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.684686"], ["directions", "Bake cookies."], ["name", "Cookies"], ["updated_at", "2014-11-10 02:07:42.684686"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.686369"], ["name", "chocolate chips"], ["updated_at", "2014-11-10 02:07:42.686369"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "measurement", "recipe_id", "unit", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.687981"], ["ingredient_id", 148], ["measurement", 1], ["recipe_id", 136], ["unit", "cup"], ["updated_at", "2014-11-10 02:07:42.687981"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRecipeIngredient Load (5.7ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 136]]
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "recipes" ("created_at", "directions", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.700234"], ["directions", "Bake cookies."], ["name", "Cookies"], ["updated_at", "2014-11-10 02:07:42.700234"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.702668"], ["name", "chocolate chips"], ["updated_at", "2014-11-10 02:07:42.702668"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "measurement", "recipe_id", "unit", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.704713"], ["ingredient_id", 149], ["measurement", 1], ["recipe_id", 137], ["unit", "cup"], ["updated_at", "2014-11-10 02:07:42.704713"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRecipeIngredient Load (0.3ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 137]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "recipe_ingredients" SET "unit" = $1, "updated_at" = $2 WHERE "recipe_ingredients"."id" = 117  [["unit", "teaspoon"], ["updated_at", "2014-11-10 02:07:42.707975"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRecipeIngredient Load (0.3ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 137]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "recipes" ("created_at", "directions", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.711661"], ["directions", "Bake cookies."], ["name", "Cookies"], ["updated_at", "2014-11-10 02:07:42.711661"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "ingredients" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-11-10 02:07:42.713358"], ["name", "chocolate chips"], ["updated_at", "2014-11-10 02:07:42.713358"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "recipe_ingredients" ("created_at", "ingredient_id", "measurement", "recipe_id", "unit", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-11-10 02:07:42.714913"], ["ingredient_id", 150], ["measurement", 1], ["recipe_id", 138], ["unit", "cup"], ["updated_at", "2014-11-10 02:07:42.714913"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRecipeIngredient Load (0.3ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 138]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "recipe_ingredients" WHERE "recipe_ingredients"."id" = $1  [["id", 118]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRecipeIngredient Load (0.2ms)[0m  SELECT  "recipe_ingredients".* FROM "recipe_ingredients"  WHERE "recipe_ingredients"."recipe_id" = $1  ORDER BY "recipe_ingredients"."id" ASC LIMIT 1  [["recipe_id", 138]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m

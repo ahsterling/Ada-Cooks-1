@@ -87,10 +87,15 @@ class RecipeForm
     )
 
     @recipe.recipe_ingredients.each do |ri|
-      ri.update(
-        unit: @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:unit],
-        measurement:  @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:measurement]
-      )
+      if ri.ingredient
+        ri.update(
+          unit: @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:unit],
+          measurement:  @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:measurement]
+        )
+      end
+      if @attributes[:existing_ingredients]["ingredient_#{ri.ingredient.id.to_s}"][:delete]
+        ri.destroy
+      end
     end
 
     add_existing_ingredients
