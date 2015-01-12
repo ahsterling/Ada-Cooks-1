@@ -35,15 +35,15 @@ hr {
 }
 
 .nav-link a {
-  color: #FFDE8D;
+  color: #fbeea3;
 }
 .nav-link a:hover {
-  color: #DE7047;
+  color: #f2b3b3;
   text-decoration: none;
 }
 
 .header {
-  background-color: #528540;
+  background-color: #355a22;
 }
 
 .header-name a {
@@ -59,7 +59,7 @@ hr {
 }
 
 .btn-danger {
-  background-color: #DE7047;
+  background-color: #b63e2a;
   border: 1px solid black;
 }
 
@@ -74,7 +74,7 @@ hr {
 }
 
 .btn-primary:hover {
-  background-color: #A8935D;
+  background-color: #9d6d1b;
 }
 
 .ing-name {

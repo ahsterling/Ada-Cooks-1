@@ -45,4 +45,5 @@ class RecipesController < ApplicationController
     delete_recipe(recipe)
     redirect_to root_path
   end
+  
 end

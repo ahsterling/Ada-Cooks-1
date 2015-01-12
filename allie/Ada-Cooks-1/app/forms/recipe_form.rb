@@ -45,7 +45,6 @@ class RecipeForm
   end
 
   def submit
-    # Should probably return whether it was saved or not
     @recipe = new_recipe
 
     if @attributes[:ingredients]

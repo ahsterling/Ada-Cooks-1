@@ -32,9 +32,7 @@ class IngredientsController < ApplicationController
   def destroy
     ingredient = Ingredient.find(params[:id])
     delete_ingredient(ingredient)
-
     redirect_to root_path
-    
   end
 
 end
